@@ -1,0 +1,141 @@
+<resources>
+    <string name="app_name">Cursos Virtuales</string>
+
+    <!-- Login (HU-25) -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_username_hint">Usuario o correo</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="login_error_empty">Completa usuario y contraseña</string>
+    <string name="login_error_invalid">Usuario o contraseña incorrectos</string>
+    <string name="login_error_session_expired">Tu sesión expiró por inactividad. Ingresa de nuevo.</string>
+    <string name="login_demo_hint">Demo — Docente: docente / docente123 · Estudiante: estudiante / estudiante123</string>
+
+    <!-- Main / Home -->
+    <string name="home_welcome">Hola, %1$s</string>
+    <string name="home_role_docente">Panel del docente</string>
+    <string name="home_role_estudiante">Panel del estudiante</string>
+    <string name="home_go_profile">Ver mi perfil</string>
+    <string name="home_logout">Cerrar sesión</string>
+
+    <!-- Profile (HU-26) -->
+    <string name="profile_title">Mi perfil</string>
+    <string name="profile_full_name_hint">Nombre completo</string>
+    <string name="profile_email_hint">Correo electrónico</string>
+    <string name="profile_edit_button">Editar</string>
+    <string name="profile_save_button">Guardar cambios</string>
+    <string name="profile_cancel_button">Cancelar</string>
+    <string name="profile_change_photo">Cambiar foto</string>
+    <string name="profile_change_password">Cambiar contraseña</string>
+    <string name="profile_current_password_hint">Contraseña actual</string>
+    <string name="profile_new_password_hint">Nueva contraseña</string>
+    <string name="profile_update_password_button">Actualizar contraseña</string>
+    <string name="profile_error_required">Todos los campos obligatorios deben estar completos</string>
+    <string name="profile_saved_ok">Perfil actualizado correctamente</string>
+    <string name="profile_password_ok">Contraseña actualizada correctamente</string>
+    <string name="profile_password_wrong">La contraseña actual no es correcta</string>
+
+    <!-- HU-03: Crear un curso con su nombre, descripcion y fechas -->
+<string name="titulo_crear_curso">Crear curso</string>
+<string name="titulo_editar_curso">Editar curso</string>
+<string name="titulo_mis_cursos">Mis cursos</string>
+<string name="label_nombre_curso">Nombre del curso</string>
+<string name="label_descripcion_curso">Descripcion</string>
+<string name="label_fecha_inicio">Fecha de inicio</string>
+<string name="label_fecha_fin">Fecha de finalizacion</string>
+<string name="hint_nombre_curso">Ej: Ingenieria de Software II</string>
+<string name="hint_descripcion_curso">Objetivo y contenido general del curso</string>
+<string name="btn_seleccionar_fecha">Seleccionar fecha</string>
+<string name="btn_crear_curso">Crear curso</string>
+<string name="btn_guardar_cambios">Guardar cambios</string>
+<string name="btn_nuevo_curso">Nuevo curso</string>
+<string name="btn_cancelar">Cancelar</string>
+<string name="btn_eliminar">Eliminar</string>
+<string name="ayuda_lista_cursos">Toca un curso para gestionarlo. Manten pulsado para eliminarlo.</string>
+<string name="mensaje_sin_cursos">Aun no has creado ningun curso.</string>
+<string name="titulo_eliminar_curso">Eliminar curso</string>
+<string name="confirmar_eliminar_curso">Se eliminara el curso \"%1$s\". Esta accion no se puede deshacer.</string>
+
+<string name="error_nombre_obligatorio">El nombre del curso es obligatorio.</string>
+<string name="error_nombre_corto">El nombre debe tener al menos %1$d caracteres.</string>
+<string name="error_descripcion_obligatoria">La descripcion del curso es obligatoria.</string>
+<string name="error_fechas_obligatorias">Debes seleccionar la fecha de inicio y la de finalizacion.</string>
+<string name="error_fecha_fin">La fecha de finalizacion debe ser posterior a la de inicio.</string>
+<string name="error_nombre_duplicado">Ya tienes un curso registrado con ese nombre.</string>
+<string name="error_guardar_curso">No fue posible guardar el curso. Intenta nuevamente.</string>
+<string name="curso_guardado_ok">Curso guardado correctamente.</string>
+<string name="curso_eliminado_ok">Curso eliminado.</string>
+<string name="curso_no_encontrado">El curso ya no existe.</string>
+
+    <!-- Registro de usuario -->
+    <string name="register_title">Crear cuenta</string>
+    <string name="register_username_hint">Usuario</string>
+    <string name="register_password_hint">Contraseña</string>
+    <string name="register_full_name_hint">Nombre completo</string>
+    <string name="register_email_hint">Correo electrónico</string>
+    <string name="register_role_label">Quiero registrarme como:</string>
+    <string name="register_role_estudiante">Estudiante</string>
+    <string name="register_role_docente">Docente</string>
+    <string name="register_button">Registrarme</string>
+    <string name="register_go_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="register_error_empty">Completa todos los campos</string>
+    <string name="register_error_username_taken">Ese usuario ya existe, elige otro</string>
+    <string name="login_go_register">¿No tienes cuenta? Regístrate</string>
+
+    <!-- HU-04: Inscribirme en un curso disponible -->
+    <string name="titulo_cursos_disponibles">Cursos disponibles</string>
+    <string name="ayuda_cursos_disponibles">Toca un curso para inscribirte.</string>
+    <string name="mensaje_sin_cursos_disponibles">Todavía no hay cursos disponibles.</string>
+    <string name="etiqueta_ya_inscrito">(Ya inscrito)</string>
+    <string name="titulo_inscribirme">Inscribirme</string>
+    <string name="confirmar_inscripcion">¿Inscribirte en el curso \"%1$s\"?</string>
+    <string name="btn_inscribirme">Inscribirme</string>
+    <string name="inscripcion_ok">Te inscribiste correctamente.</string>
+    <string name="mensaje_ya_inscrito">Ya estás inscrito en este curso.</string>
+
+    <!-- HU-05: Organizar el curso en unidades o modulos -->
+    <string name="titulo_unidades_curso">Unidades del curso</string>
+    <string name="ayuda_lista_unidades">Toca una unidad para seleccionarla y usar Subir/Bajar. Manten pulsado para eliminarla.</string>
+    <string name="btn_nueva_unidad">Nueva unidad</string>
+    <string name="btn_subir">Subir</string>
+    <string name="btn_bajar">Bajar</string>
+    <string name="mensaje_sin_unidades">Este curso aun no tiene unidades.</string>
+    <string name="titulo_nueva_unidad">Nueva unidad</string>
+    <string name="label_nombre_unidad">Nombre de la unidad</string>
+    <string name="hint_nombre_unidad">Ej: Unidad 1 - Introduccion</string>
+    <string name="label_recurso_unidad">Material o recurso (opcional)</string>
+    <string name="hint_recurso_unidad">Ej: enlace al video o descripcion del contenido</string>
+    <string name="btn_guardar_unidad">Guardar unidad</string>
+    <string name="btn_ver_unidades">Unidades</string>
+    <string name="error_nombre_unidad_obligatorio">El nombre de la unidad es obligatorio.</string>
+    <string name="error_guardar_unidad">No fue posible guardar la unidad. Intenta nuevamente.</string>
+    <string name="unidad_guardada_ok">Unidad guardada correctamente.</string>
+    <string name="unidad_eliminada_ok">Unidad eliminada.</string>
+    <string name="titulo_eliminar_unidad">Eliminar unidad</string>
+    <string name="confirmar_eliminar_unidad">Se eliminara la unidad \"%1$s\". Esta accion no se puede deshacer.</string>
+
+    <!-- HU-06: Crear una tarea con enunciado, fecha limite y puntaje -->
+    <string name="titulo_tareas_curso">Tareas del curso</string>
+    <string name="ayuda_lista_tareas">Manten pulsada una tarea para eliminarla.</string>
+    <string name="btn_nueva_tarea">Nueva tarea</string>
+    <string name="mensaje_sin_tareas">Este curso aun no tiene tareas.</string>
+    <string name="titulo_crear_tarea">Crear tarea</string>
+    <string name="label_titulo_tarea">Titulo de la tarea</string>
+    <string name="hint_titulo_tarea">Ej: Taller de repaso Unidad 1</string>
+    <string name="label_enunciado_tarea">Enunciado</string>
+    <string name="hint_enunciado_tarea">Describe la actividad que debe realizar el estudiante</string>
+    <string name="label_fecha_limite_tarea">Fecha limite de entrega</string>
+    <string name="label_puntaje_tarea">Puntaje maximo</string>
+    <string name="hint_puntaje_tarea">Ej: 100</string>
+    <string name="btn_crear_tarea">Crear tarea</string>
+    <string name="btn_ver_tareas">Tareas</string>
+    <string name="error_titulo_tarea_obligatorio">El titulo de la tarea es obligatorio.</string>
+    <string name="error_enunciado_tarea_obligatorio">El enunciado de la tarea es obligatorio.</string>
+    <string name="error_fecha_limite_obligatoria">Debes seleccionar la fecha limite de entrega.</string>
+    <string name="error_puntaje_invalido">El puntaje debe ser un numero entre 1 y %1$d.</string>
+    <string name="error_guardar_tarea">No fue posible guardar la tarea. Intenta nuevamente.</string>
+    <string name="tarea_guardada_ok">Tarea guardada correctamente.</string>
+    <string name="tarea_eliminada_ok">Tarea eliminada.</string>
+    <string name="titulo_eliminar_tarea">Eliminar tarea</string>
+    <string name="confirmar_eliminar_tarea">Se eliminara la tarea \"%1$s\". Esta accion no se puede deshacer.</string>
+</resources>

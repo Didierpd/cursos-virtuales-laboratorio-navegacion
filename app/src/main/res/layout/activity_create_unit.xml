@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.cursosvirtuales.app.cursos.CreateUnitActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/titulo_nueva_unidad"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_nombre_unidad" />
+
+        <EditText
+            android:id="@+id/et_nombre_unidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="@string/hint_nombre_unidad"
+            android:inputType="textCapSentences"
+            android:maxLength="80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_recurso_unidad" />
+
+        <EditText
+            android:id="@+id/et_recurso_unidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="@string/hint_recurso_unidad"
+            android:inputType="textMultiLine"
+            android:maxLength="200"
+            android:minLines="2" />
+
+        <TextView
+            android:id="@+id/tv_error_unidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textColor="#C0392B"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="El nombre de la unidad es obligatorio."
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_guardar_unidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_guardar_unidad" />
+
+    </LinearLayout>
+
+</ScrollView>

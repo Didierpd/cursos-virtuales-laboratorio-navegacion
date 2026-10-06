@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.cursosvirtuales.app.cursos.CourseDetailActivity">
+
+    <TextView
+        android:id="@+id/tv_nombre_curso_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Ingenieria de Software II" />
+
+    <TextView
+        android:id="@+id/tv_fechas_curso_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:textSize="14sp"
+        tools:text="01/09/2026 - 01/12/2026" />
+
+    <Button
+        android:id="@+id/btn_unidades_curso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="@string/btn_ver_unidades" />
+
+    <Button
+        android:id="@+id/btn_tareas_curso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="@string/btn_ver_tareas" />
+
+    <Button
+        android:id="@+id/btn_editar_curso_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_editar_curso" />
+
+    <Button
+        android:id="@+id/btn_laboratorio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Laboratorio" />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_tardias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Aceptar entregas tardías en este curso" />
+    <TextView
+        android:id="@+id/tv_politica_tardias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+</ScrollView>
