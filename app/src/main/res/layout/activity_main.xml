@@ -52,6 +52,12 @@
         android:visibility="gone" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnServiciosRest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Servicios REST" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGoProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

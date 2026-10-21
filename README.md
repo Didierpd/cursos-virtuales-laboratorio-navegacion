@@ -1,5 +1,11 @@
 # Cursos Virtuales — HU-05 a HU-12
 
+## Taller de servicios REST con Retrofit
+
+Nueva sección **Servicios REST**: consultas GET y registros POST conectados a
+GestiónAcadémicaJPA. Ver [preparación, contrato y demostración](docs/taller-retrofit.md).
+
+
 Aplicación Android nativa (Java/Kotlin, SQLite). Conserva login, registro, perfil,
 creación/edición de cursos e inscripciones del ZIP original.
 

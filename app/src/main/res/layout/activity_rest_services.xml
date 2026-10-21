@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="20dp">
+
+<TextView  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Servicios REST · Gestión académica" android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<TextView  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Configura el servidor y consulta o registra información compartida. Esta sección usa el backend; los cursos locales se consultan desde el menú principal." android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<EditText android:id="@+id/baseUrl" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="URL del servidor (terminar en /academica/api/)" android:inputType="textUri" android:maxLines="1" />
+<com.google.android.material.button.MaterialButton android:id="@+id/saveUrl" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Guardar conexión" />
+<ProgressBar android:id="@+id/progress" android:layout_width="48dp" android:layout_height="48dp" android:visibility="gone" />
+<TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Listo para consultar." android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<com.google.android.material.button.MaterialButton android:id="@+id/loadCourses" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Consultar cursos · GET" />
+<TextView android:id="@+id/courses" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sin consultar." android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<com.google.android.material.button.MaterialButton android:id="@+id/loadStudents" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Consultar estudiantes · GET" />
+<TextView android:id="@+id/students" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sin consultar." android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<TextView  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Registrar curso" android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<EditText android:id="@+id/courseCode" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Código del curso" android:inputType="text" android:maxLines="1" />
+<EditText android:id="@+id/courseName" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Nombre del curso" android:inputType="text" android:maxLines="1" />
+<EditText android:id="@+id/credits" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Créditos (1–30)" android:inputType="number" android:maxLines="1" />
+<EditText android:id="@+id/semester" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Semestre (1–20)" android:inputType="number" android:maxLines="1" />
+<EditText android:id="@+id/capacity" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Cupo (1–1000)" android:inputType="number" android:maxLines="1" />
+<com.google.android.material.button.MaterialButton android:id="@+id/createCourse" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Registrar curso · POST" />
+<TextView  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Registrar estudiante" android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<EditText android:id="@+id/studentCode" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Código del estudiante" android:inputType="text" android:maxLines="1" />
+<EditText android:id="@+id/studentName" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Nombre del estudiante" android:inputType="text" android:maxLines="1" />
+<EditText android:id="@+id/studentEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Correo del estudiante" android:inputType="textEmailAddress" android:maxLines="1" />
+<com.google.android.material.button.MaterialButton android:id="@+id/createStudent" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Registrar estudiante · POST" />
+<TextView  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Inscribir estudiante en un curso" android:textSize="18sp" android:paddingTop="16dp" android:accessibilityLiveRegion="polite" />
+<EditText android:id="@+id/enrollmentStudent" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Código del estudiante a inscribir" android:inputType="text" android:maxLines="1" />
+<EditText android:id="@+id/enrollmentCourse" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:hint="Código del curso para inscripción" android:inputType="text" android:maxLines="1" />
+<com.google.android.material.button.MaterialButton android:id="@+id/enroll" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Inscribir · POST" />
+</LinearLayout></ScrollView>

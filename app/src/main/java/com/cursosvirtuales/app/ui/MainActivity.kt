@@ -75,6 +75,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnCalificaciones.setOnClickListener {
             startActivity(Intent(this, com.cursosvirtuales.app.cursos.GradebookActivity::class.java))
         }
+        binding.btnServiciosRest.setOnClickListener {
+            startActivity(Intent(this, RestServicesActivity::class.java))
+        }
         binding.btnGoProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }

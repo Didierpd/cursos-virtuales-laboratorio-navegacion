@@ -1,0 +1,4 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solo el laboratorio debug permite el HTTP del servidor GlassFish local. -->
+    <application android:usesCleartextTraffic="true" />
+</manifest>
