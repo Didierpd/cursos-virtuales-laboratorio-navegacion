@@ -1,5 +1,9 @@
 # Cursos Virtuales — HU-05 a HU-12
 
+## Repositorios del curso
+
+Consultar el [listado de los cuatro repositorios y su estado de integración](docs/repositorios.md).
+
 ## Taller de servicios REST con Retrofit
 
 Nueva sección **Servicios REST**: consultas GET y registros POST conectados a
