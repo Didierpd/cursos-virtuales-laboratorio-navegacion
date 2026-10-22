@@ -4,3 +4,6 @@ local.properties
 **/build/
 *.iml
 __pycache__/
+
+# Maven backend build output
+**/target/

@@ -1,27 +1,36 @@
-# Repositorios del curso y estado de integración
+# Integración de los cuatro repositorios
 
-| Repositorio | Contenido | Relación con la entrega Retrofit |
-| --- | --- | --- |
-| [CursosVirtualesApp](https://github.com/Didierpd/cursos-virtuales-laboratorio-navegacion) | App Android de profesores y estudiantes, HU locales con SQLite y pantalla de servicios REST | Proyecto Android principal |
-| [GestionAcademicaJPA](https://github.com/Didierpd/GestionAcademicaJPA) | Backend Java EE, EJB, JPA, Derby, JSP y API REST académica | La app consume sus GET y POST; el código del backend permanece en su propio repositorio |
-| [ConstraintLayoutsLab](https://github.com/Didierpd/ConstraintLayoutsLab) | Ejercicios de ConstraintLayout y formularios Android | Laboratorio independiente; sus pantallas no se incorporaron a la app principal |
-| [SQLite encomiendas](https://github.com/nicolasmoreno2006/laboratorio-sqlite-encomiendas) | ZIP `encomiendas-sqlite.zip`: registro, consulta y búsqueda de encomiendas; remitentes, destinatarios y persistencia SQLite | Referencia adicional revisada; no se incorporaron sus pantallas ni sus tablas al sistema académico |
+Esta entrega instala **una sola app Android**, `com.cursosvirtuales.app`, con
+un menú, una sesión y navegación compartida. El código del servidor también
+está incluido en `backend/`, para descargar la entrega desde un solo repositorio.
 
-## Qué contiene actualmente el proyecto
+| Origen | Integración en esta entrega |
+| --- | --- |
+| [Cursos Virtuales](https://github.com/Didierpd/cursos-virtuales-laboratorio-navegacion) | Login, perfiles y HU de cursos, unidades, tareas, entregas, calificaciones y laboratorios; menú principal y Retrofit |
+| [GestionAcademicaJPA](https://github.com/Didierpd/GestionAcademicaJPA) | Código completo del backend en `backend/`; cursos, estudiantes e inscripciones accesibles desde Servicios REST |
+| [ConstraintLayoutsLab](https://github.com/Didierpd/ConstraintLayoutsLab) | Cuatro ejercicios ConstraintLayout y formularios de correo y entrega en `talleres/layouts`, accesibles desde Interfaces y formularios |
+| [SQLite encomiendas](https://github.com/nicolasmoreno2006/laboratorio-sqlite-encomiendas) | Modelos, registro, consulta, búsqueda y SQLite adaptados en `talleres/encomiendas`, accesibles desde Encomiendas · SQLite |
 
-Este repositorio contiene el código de la aplicación académica y la integración
-Retrofit con el backend. No contiene copias de los otros tres repositorios,
-submódulos Git ni un ZIP que reúna todos los proyectos.
+## Adaptaciones
 
-Conectar Android con un backend permite intercambiar datos entre dos aplicaciones;
-no reúne sus archivos ni convierte sus bases de datos en una sola. Los cursos
-SQLite previos y los cursos remotos de JPA siguen siendo conjuntos de datos distintos.
+Se cambiaron los paquetes y se prefijaron recursos para evitar colisiones.
+Los talleres usan la sesión de Cursos Virtuales y el botón de regreso al menú.
+El formulario de entrega guarda la última entrega por usuario; el formulario
+de correo guarda un borrador por usuario, sin afirmar que envía mensajes.
+Se mejoró la validación de URL GitHub y números de encomiendas.
 
-El laboratorio de encomiendas usa otro dominio: envíos, remitentes y destinatarios.
-Sus técnicas SQLite pueden servir de referencia para el proyecto académico.
-Agregar su enlace a esta lista no equivale a integrar sus funcionalidades.
+El código de encomiendas proviene del ZIP `encomiendas-sqlite.zip` del repositorio
+de nicolasmoreno2006, blob `f3e2631e433206075807e5f619007c61cf30c521`.
+Se reconoce esa procedencia; no se atribuye su autoría original a este proyecto.
 
-Para reunir todo en un repositorio se pueden guardar proyectos en carpetas
-separadas. Para obtener una sola app académica hay que adaptar las funcionalidades
-pertinentes y unificar navegación, modelos y persistencia. Esa elección queda
-pendiente de la definición del alcance con el usuario.
+## Ejecución
+
+Consultar [la guía de presentación](presentacion.md). La app es un solo APK;
+el servidor Java EE se ejecuta en el computador y Android lo consulta por HTTP.
+El backend no puede ejecutarse dentro del APK. En el emulador su URL es
+`http://10.0.2.2:8080/academica/api/`.
+
+Los datos académicos locales, las encomiendas locales y la gestión remota
+conservan su almacenamiento correspondiente. No se implementa sincronización
+automática entre esas bases. Los talleres se reúnen como secciones de una sola
+app, conservando sus funciones originales.

@@ -77,6 +77,12 @@
         <activity android:name=".cursos.GradebookActivity" android:exported="false" />
         <activity android:name=".cursos.LaboratoryActivity" android:exported="false" />
         <activity android:name=".cursos.CreateLaboratoryActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".talleres.layouts.LayoutLabActivity" android:exported="false" android:label="Interfaces y formularios" android:theme="@style/Theme.CursosVirtuales.Workshop" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".talleres.layouts.EmailActivity" android:exported="false" android:label="Borrador de correo" android:theme="@style/Theme.CursosVirtuales.Workshop" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".talleres.layouts.StudentDeliveryActivity" android:exported="false" android:label="Entrega de actividad" android:theme="@style/Theme.CursosVirtuales.Workshop" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".talleres.layouts.ExerciseActivity" android:exported="false" android:label="Ejercicios ConstraintLayout" android:theme="@style/Theme.CursosVirtuales.Workshop" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".talleres.encomiendas.RegistroActivity" android:exported="false" android:label="Registrar encomienda" android:theme="@style/Theme.CursosVirtuales.Workshop" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".talleres.encomiendas.ConsultaActivity" android:exported="false" android:label="Consultar encomiendas" android:theme="@style/Theme.CursosVirtuales.Workshop" android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

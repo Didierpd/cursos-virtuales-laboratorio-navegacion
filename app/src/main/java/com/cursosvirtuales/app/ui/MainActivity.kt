@@ -75,6 +75,21 @@ class MainActivity : AppCompatActivity() {
         binding.btnCalificaciones.setOnClickListener {
             startActivity(Intent(this, com.cursosvirtuales.app.cursos.GradebookActivity::class.java))
         }
+        binding.btnDemo.visibility = if (user.id == "u-docente-1") android.view.View.VISIBLE else android.view.View.GONE
+        binding.btnDemo.setOnClickListener {
+            try {
+                com.cursosvirtuales.app.data.DemoData.prepare(this)
+                android.widget.Toast.makeText(this, "Ejemplos listos: curso, unidad, tarea, laboratorio y encomienda. El estudiante ya está inscrito.", android.widget.Toast.LENGTH_LONG).show()
+            } catch (ex: Exception) {
+                android.widget.Toast.makeText(this, ex.message ?: "No se pudieron cargar los ejemplos.", android.widget.Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.btnEncomiendas.setOnClickListener {
+            startActivity(Intent(this, com.cursosvirtuales.app.talleres.encomiendas.RegistroActivity::class.java))
+        }
+        binding.btnLayouts.setOnClickListener {
+            startActivity(Intent(this, com.cursosvirtuales.app.talleres.layouts.LayoutLabActivity::class.java))
+        }
         binding.btnServiciosRest.setOnClickListener {
             startActivity(Intent(this, RestServicesActivity::class.java))
         }

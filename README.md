@@ -1,4 +1,11 @@
-# Cursos Virtuales — HU-05 a HU-12
+# Cursos Virtuales — App integrada de los talleres
+
+Una sola app Android con profesores y estudiantes, servicios REST, encomiendas
+SQLite y ejercicios ConstraintLayout. El servidor está incluido en `backend/`.
+
+**Para ejecutarla y exponer:** [guía de presentación](docs/presentacion.md).
+En este computador también se puede usar `./scripts/presentar.sh` o el acceso
+del escritorio **Presentar Cursos Virtuales**.
 
 ## Repositorios del curso
 

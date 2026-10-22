@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="AcademicaPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/AcademicaDS</jta-data-source>
+        <class>co.edu.unipiloto.academica.modelo.Estudiante</class>
+        <class>co.edu.unipiloto.academica.modelo.Curso</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+            <property name="eclipselink.logging.level" value="WARNING"/>
+        </properties>
+    </persistence-unit>
+</persistence>

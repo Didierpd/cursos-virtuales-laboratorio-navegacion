@@ -1,0 +1,37 @@
+<resources>
+    <string name="cl_app_name">Laboratorio Constraint Layouts</string>
+    <string name="cl_lab_subtitle">Ejercicios de las diapositivas 43–46 y formularios solicitados</string>
+    <string name="cl_exercise_1">Ejercicio 1 · Superior derecha</string>
+    <string name="cl_exercise_2">Ejercicio 2 · Inferior centrado</string>
+    <string name="cl_exercise_3">Ejercicio 3 · Espacio completo</string>
+    <string name="cl_exercise_4">Ejercicio 4 · Ancho restante</string>
+    <string name="cl_email_form">Formulario de correo</string>
+    <string name="cl_delivery_form">Entrega de actividad formativa</string>
+    <string name="cl_button">Button</string>
+    <string name="cl_button_1">Button 1</string>
+    <string name="cl_button_2">Button 2</string>
+    <string name="cl_to_label">To:</string>
+    <string name="cl_email_hint">Enter email address</string>
+    <string name="cl_subject_hint">Subject</string>
+    <string name="cl_message_hint">Message</string>
+    <string name="cl_send">Guardar borrador</string>
+    <string name="cl_email_required">Escriba un correo válido</string>
+    <string name="cl_subject_required">Escriba el asunto</string>
+    <string name="cl_message_required">Escriba el mensaje</string>
+    <string name="cl_email_sent">Borrador guardado en este dispositivo</string>
+    <string name="cl_delivery_title">Registro de entrega</string>
+    <string name="cl_delivery_help">Guarda la actividad y su repositorio en este dispositivo</string>
+    <string name="cl_student_name_hint">Nombre completo del estudiante</string>
+    <string name="cl_student_code_hint">Código estudiantil</string>
+    <string name="cl_student_email_hint">Correo institucional</string>
+    <string name="cl_course_hint">Asignatura</string>
+    <string name="cl_activity_hint">Nombre de la actividad</string>
+    <string name="cl_link_hint">URL del repositorio GitHub</string>
+    <string name="cl_comments_hint">Descripción u observaciones</string>
+    <string name="cl_register_delivery">Registrar entrega</string>
+    <string name="cl_required_field">Este campo es obligatorio</string>
+    <string name="cl_invalid_email">Ingrese un correo válido</string>
+    <string name="cl_invalid_url">Ingrese una URL válida de GitHub</string>
+    <string name="cl_delivery_registered">Entrega guardada en este dispositivo</string>
+    <string name="cl_back">Volver</string>
+</resources>

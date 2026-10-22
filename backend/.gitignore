@@ -1,0 +1,7 @@
+**/target/
+.idea/
+**/nbproject/private/
+**/nb-configuration.xml
+*.log
+*.zip
+__pycache__/

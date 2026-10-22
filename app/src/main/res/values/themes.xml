@@ -6,4 +6,9 @@
         <item name="android:windowBackground">@color/background</item>
         <item name="android:statusBarColor">@color/brand_primary_dark</item>
     </style>
+    <style name="Theme.CursosVirtuales.Workshop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryDark">@color/brand_primary_dark</item>
+        <item name="colorAccent">@color/brand_accent</item>
+    </style>
 </resources>

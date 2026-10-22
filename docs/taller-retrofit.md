@@ -21,8 +21,8 @@ flowchart LR
 
 ## Preparar el backend
 
-Clonar [GestionAcademicaJPA](https://github.com/Didierpd/GestionAcademicaJPA).
-Seguir su README para iniciar GlassFish 4.1, Java 8 y Derby y configurar
+El código de [GestionAcademicaJPA](https://github.com/Didierpd/GestionAcademicaJPA)
+está incluido en `backend/` de esta entrega. Seguir `backend/README.md` para iniciar GlassFish 4.1, Java 8 y Derby y configurar
 `jdbc/AcademicaDS`. Compilar con `mvn package` y desplegar el EAR actualizado.
 Verificar en el navegador `http://localhost:8080/academica/api/cursos`: debe mostrar
 un arreglo JSON, incluso `[]` si la base está vacía.
@@ -120,5 +120,5 @@ https://github.com/Didierpd/GestionAcademicaJPA
 - `scripts/pruebas_http.py`: 25 comprobaciones correctas del sitio JSP existente.
 - Los scripts eliminaron sus registros temporales al finalizar.
 
-Lint conserva advertencias del proyecto; no hay errores. No se hizo una revisión
-visual de la nueva pantalla en emulador ni se recibió la presentación del profesor.
+Lint conserva advertencias del proyecto; no hay errores. La revisión inicial no incluyó emulador; la integración posterior y el recorrido
+se documentan en `presentacion.md`. No se recibió la presentación del profesor.

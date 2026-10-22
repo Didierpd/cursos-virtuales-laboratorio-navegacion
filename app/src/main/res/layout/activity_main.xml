@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/background"
     android:padding="24dp">
@@ -57,6 +59,18 @@
         android:layout_height="wrap_content"
         android:text="Servicios REST" />
 
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:text="Talleres del curso" android:textStyle="bold" android:textSize="18sp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEncomiendas" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Encomiendas · SQLite" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLayouts" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Interfaces y formularios" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDemo" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Cargar ejemplos de presentación" android:visibility="gone" />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGoProfile"
         android:layout_width="match_parent"
@@ -72,3 +86,4 @@
         android:text="@string/home_logout" />
 
 </LinearLayout>
+</ScrollView>
