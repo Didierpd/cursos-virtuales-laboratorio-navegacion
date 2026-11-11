@@ -47,6 +47,10 @@ class MainActivity : AppCompatActivity() {
             Role.ESTUDIANTE -> getString(com.cursosvirtuales.app.R.string.home_role_estudiante)
         }
 
+        binding.btnOdometro.visibility = if (user.role == Role.ESTUDIANTE) android.view.View.VISIBLE else android.view.View.GONE
+        binding.btnOdometro.setOnClickListener {
+            startActivity(Intent(this, com.cursosvirtuales.app.odometro.OdometerActivity::class.java))
+        }
         binding.btnAvisos.setOnClickListener {
             startActivity(Intent(this, com.cursosvirtuales.app.servicios.AvisosActivity::class.java))
         }

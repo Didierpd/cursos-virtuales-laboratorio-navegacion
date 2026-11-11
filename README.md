@@ -26,6 +26,10 @@ creación/edición de cursos e inscripciones del ZIP original.
 Incluye la respuesta al ejercicio de la diapositiva 8, clasificación de pantallas,
 mapa de navegación por rol y uso de listas, adaptadores e intents.
 
+## Laboratorio de bound services y odómetro
+
+Como estudiante, abrir **Odómetro de tutoría** para configurar movimiento mínimo e intervalo, capturar la ubicación del dispositivo y guardar metros recorridos por proceso formativo. El reporte consolida los recorridos de la cuenta. Ver [uso, ciclo de enlace y persistencia del odómetro](docs/laboratorio-bound-services.md).
+
 ## Laboratorio de started services
 
 **Avisos y servicios** permite iniciar un recordatorio con espera de 10 segundos mediante `IntentService`. Las entregas generan avisos para el docente y las calificaciones para el estudiante de la cuenta local. Ver [recorrido y funcionamiento de las notificaciones](docs/laboratorio-started-services.md).

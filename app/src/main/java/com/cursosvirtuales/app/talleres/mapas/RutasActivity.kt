@@ -337,6 +337,12 @@ class RutasActivity : TallerActivity() {
             val destacado = if (i == 0) "Más cercana · " else ""
             texto(resultados, "$destacado${sede.nombre} · ${km(inicio.kilometrosHasta(sede.punto))} km")
             boton(resultados, "Ubicar ${sede.nombre} en Maps") { MapsIntent.ubicar(this, sede.punto) }
+            if (com.cursosvirtuales.app.cursos.CourseAccess.user(this)?.role == com.cursosvirtuales.app.model.Role.ESTUDIANTE) {
+                boton(resultados, "Registrar desplazamiento a ${sede.nombre}") {
+                    startActivity(android.content.Intent(this, com.cursosvirtuales.app.odometro.OdometerActivity::class.java)
+                        .putExtra("formacion", sede.nombre))
+                }
+            }
             boton(resultados, "Ver ruta a ${sede.nombre} en Maps") {
                 MapsIntent.ruta(this, inicio, listOf(sede), opciones[modos.selectedItemPosition])
             }

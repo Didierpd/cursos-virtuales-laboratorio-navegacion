@@ -116,7 +116,7 @@ public class LearningFlowTest extends AndroidTestCase {
         db.execSQL("DROP TABLE ADJUNTO"); db.execSQL("DROP TABLE ENTREGA");
         db.setVersion(3); helper.close();
         helper = new AppDatabaseHelper(isolated);
-        assertEquals(7,helper.getReadableDatabase().getVersion());
+        assertEquals(8,helper.getReadableDatabase().getVersion());
         helper.close();
         assertNotNull(new CourseRepository(isolated).buscarPorId(courseId));
         assertNotNull(new LearningRepository(isolated).task(taskId));
@@ -246,6 +246,26 @@ public class LearningFlowTest extends AndroidTestCase {
         // El recordatorio no pertenece a una tarea y se retira al terminar esta prueba.
         try (AppDatabaseHelper helper = new AppDatabaseHelper(isolated)) {
             helper.getWritableDatabase().delete("AVISO", "_id=?", new String[]{String.valueOf(id)});
+        }
+    }
+    public void testVersion7MigrationKeepsNotificationsAndAddsOdometer() {
+        long aviso = new com.cursosvirtuales.app.servicios.AvisosRepository(isolated).demostracion(teacher, "Conservar aviso");
+        try (AppDatabaseHelper helper = new AppDatabaseHelper(isolated)) {
+            SQLiteDatabase db = helper.getWritableDatabase();
+            db.execSQL("DROP TRIGGER borrar_puntos_recorrido");
+            db.execSQL("DROP TABLE PUNTO_RECORRIDO");
+            db.execSQL("DROP TABLE DESPLAZAMIENTO");
+            db.setVersion(7);
+        }
+        try (AppDatabaseHelper helper = new AppDatabaseHelper(isolated)) {
+            SQLiteDatabase db = helper.getReadableDatabase();
+            assertEquals(8, db.getVersion());
+            assertNotNull(new LearningRepository(isolated).task(taskId));
+            try (android.database.Cursor c = db.rawQuery("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name IN ('DESPLAZAMIENTO','PUNTO_RECORRIDO')",null)) {
+                assertTrue(c.moveToFirst());
+                assertEquals(2, c.getInt(0));
+            }
+            db.delete("AVISO", "_id=?", new String[]{String.valueOf(aviso)});
         }
     }
 }

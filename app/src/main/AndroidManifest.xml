@@ -28,6 +28,8 @@
         </activity>
 
         <activity android:name=".talleres.mapas.RutasActivity" android:exported="false" />
+        <service android:name=".odometro.OdometerService" android:exported="false" />
+        <activity android:name=".odometro.OdometerActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <service android:name=".servicios.DelayedMessageService" android:exported="false" />
         <activity android:name=".servicios.AvisosActivity" android:exported="false" />
         <activity android:name=".ui.RestServicesActivity" android:exported="false" />

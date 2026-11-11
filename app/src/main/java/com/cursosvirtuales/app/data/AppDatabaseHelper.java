@@ -19,7 +19,7 @@ import java.security.MessageDigest;
 public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Closeable {
 
     private static final String NOMBRE_BD = "cursos_virtuales.db";
-    private static final int VERSION_BD = 7;
+    private static final int VERSION_BD = 8;
 
     // Tabla USUARIO (login/perfil/registro)
     public static final String TABLA_USUARIO = "USUARIO";
@@ -111,6 +111,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Close
         crearPoliticaTardias(db);
         crearLaboratorios(db);
         crearAvisos(db);
+        crearOdometro(db);
         seedUsuariosDemo(db);
     }
 
@@ -157,6 +158,13 @@ public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Close
         db.execSQL("CREATE TRIGGER IF NOT EXISTS borrar_curso AFTER DELETE ON CURSO BEGIN DELETE FROM TAREA WHERE CURSO_ID=OLD._id; DELETE FROM UNIDAD WHERE CURSO_ID=OLD._id; DELETE FROM INSCRIPCION WHERE CURSO_ID=OLD._id; END");
     }
 
+    private void crearOdometro(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS DESPLAZAMIENTO (_id INTEGER PRIMARY KEY AUTOINCREMENT, ESTUDIANTE_ID TEXT NOT NULL, FORMACION TEXT NOT NULL, INICIO INTEGER NOT NULL, FIN INTEGER, ESTADO TEXT NOT NULL, METROS REAL NOT NULL DEFAULT 0, PRECISION_MOVIMIENTO REAL NOT NULL, INTERVALO_SEGUNDOS INTEGER NOT NULL, LATITUD REAL, LONGITUD REAL, MUESTRAS INTEGER NOT NULL DEFAULT 0, SIMULADO INTEGER NOT NULL DEFAULT 0, SEGMENTO TEXT)");
+        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS odometro_en_curso ON DESPLAZAMIENTO(ESTUDIANTE_ID) WHERE ESTADO!='FINALIZADO'");
+        db.execSQL("CREATE TABLE IF NOT EXISTS PUNTO_RECORRIDO (_id INTEGER PRIMARY KEY AUTOINCREMENT, DESPLAZAMIENTO_ID INTEGER NOT NULL, FECHA INTEGER NOT NULL, LATITUD REAL NOT NULL, LONGITUD REAL NOT NULL, PRECISION_GPS REAL NOT NULL, METROS_TRAMO REAL NOT NULL, SIMULADO INTEGER NOT NULL)");
+        db.execSQL("CREATE TRIGGER IF NOT EXISTS borrar_puntos_recorrido AFTER DELETE ON DESPLAZAMIENTO BEGIN DELETE FROM PUNTO_RECORRIDO WHERE DESPLAZAMIENTO_ID=OLD._id; END");
+    }
+
     private void crearAvisos(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS AVISO (_id INTEGER PRIMARY KEY AUTOINCREMENT, DESTINATARIO TEXT NOT NULL, TAREA_ID INTEGER, TITULO TEXT NOT NULL, MENSAJE TEXT NOT NULL, DISPONIBLE_DESDE INTEGER NOT NULL, PUBLICADO INTEGER NOT NULL DEFAULT 0)");
         db.execSQL("CREATE INDEX IF NOT EXISTS avisos_destinatario ON AVISO(DESTINATARIO, PUBLICADO)");
@@ -193,5 +201,6 @@ public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Close
         if (anterior < 5) crearPoliticaTardias(db);
         if (anterior < 6) crearLaboratorios(db);
         if (anterior < 7) crearAvisos(db);
+        if (anterior < 8) crearOdometro(db);
     }
 }
