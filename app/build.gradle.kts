@@ -20,6 +20,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            if (providers.gradleProperty("mapas.isolatedTest").orNull == "true") {
+                applicationIdSuffix = ".mapaslab"
+            }
+        }
         release {
             isMinifyEnabled = false
         }

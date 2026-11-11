@@ -38,3 +38,15 @@ Las sedes de ejemplo son puntos de demostración y las sedes guardadas se admini
 La app solicita ubicación al pulsar el botón de GPS. Con permiso preciso intenta el proveedor GPS y puede utilizar el de red si GPS está desactivado. Con permiso aproximado usa el proveedor de red. Ante permiso denegado, proveedor desactivado o falta de señal se mantienen disponibles las coordenadas manuales.
 
 Para mostrar un punto y solicitar indicaciones se usa `Intent.ACTION_VIEW` con una URL de Maps que indica la ubicación o el origen, el destino, el medio de transporte y los puntos intermedios. Se intenta abrir el paquete de Google Maps y, si falta, se entrega la misma URL al navegador disponible. Los enlaces funcionan sin clave API. [Google Maps Intents para Android](https://developer.android.com/guide/components/google-maps-intents).
+
+## Verificación
+
+La compilación y las 8 pruebas unitarias terminaron correctamente. Las 3 pruebas instrumentadas de encomiendas pasaron en Android 9, incluida la migración desde la versión 1, el aislamiento por día/recolector y la persistencia de asignaciones.
+
+Para instalar una copia de prueba con almacenamiento propio cuando el dispositivo tenga otra versión de la app, compilar así.
+
+```bash
+./gradlew -Pmapas.isolatedTest=true :app:assembleDebug
+```
+
+Esta variante usa el identificador `com.cursosvirtuales.app.mapaslab`. Para una compilación habitual se utiliza el comando de la sección Ejecutar.
