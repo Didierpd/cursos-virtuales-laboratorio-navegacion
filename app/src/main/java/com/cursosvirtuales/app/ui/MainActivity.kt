@@ -47,6 +47,11 @@ class MainActivity : AppCompatActivity() {
             Role.ESTUDIANTE -> getString(com.cursosvirtuales.app.R.string.home_role_estudiante)
         }
 
+        binding.btnAvisos.setOnClickListener {
+            startActivity(Intent(this, com.cursosvirtuales.app.servicios.AvisosActivity::class.java))
+        }
+        com.cursosvirtuales.app.servicios.AvisosAndroid.procesar(this)
+
         // HU-03: solo el docente ve el acceso a "Mis cursos".
         if (user.role == Role.DOCENTE) {
             binding.btnMisCursos.visibility = android.view.View.VISIBLE

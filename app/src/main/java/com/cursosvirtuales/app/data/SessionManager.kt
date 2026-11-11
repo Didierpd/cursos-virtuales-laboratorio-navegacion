@@ -12,7 +12,7 @@ import java.util.UUID
  * demostración del flujo de UI. En producción el token lo emite el backend
  * (tarea 1.2) y debe viajar en cada petición HTTP (ej. header Authorization).
  */
-class SessionManager(context: Context) {
+class SessionManager(private val context: Context) {
 
     private val prefs: SharedPreferences =
         context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -27,7 +27,8 @@ class SessionManager(context: Context) {
         const val INACTIVITY_TIMEOUT_MS = 15 * 60 * 1000L
     }
 
-    fun startSession(userId: String) {
+    fun startSession(userId: String) = synchronized(com.cursosvirtuales.app.servicios.AvisosAndroid.bloqueoSesion) {
+        com.cursosvirtuales.app.servicios.AvisosAndroid.limpiar(context)
         val token = UUID.randomUUID().toString()
         prefs.edit()
             .putString(KEY_TOKEN, token)
@@ -58,7 +59,8 @@ class SessionManager(context: Context) {
     fun currentUserId(): String? = prefs.getString(KEY_USER_ID, null)
 
     /** Invalida el token y limpia la sesión (tarea 1.5). */
-    fun logout() {
+    fun logout() = synchronized(com.cursosvirtuales.app.servicios.AvisosAndroid.bloqueoSesion) {
+        com.cursosvirtuales.app.servicios.AvisosAndroid.limpiar(context)
         prefs.edit().clear().apply()
     }
 }

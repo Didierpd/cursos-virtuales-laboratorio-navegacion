@@ -19,7 +19,7 @@ import java.security.MessageDigest;
 public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Closeable {
 
     private static final String NOMBRE_BD = "cursos_virtuales.db";
-    private static final int VERSION_BD = 6;
+    private static final int VERSION_BD = 7;
 
     // Tabla USUARIO (login/perfil/registro)
     public static final String TABLA_USUARIO = "USUARIO";
@@ -110,6 +110,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Close
         crearEntregas(db);
         crearPoliticaTardias(db);
         crearLaboratorios(db);
+        crearAvisos(db);
         seedUsuariosDemo(db);
     }
 
@@ -156,6 +157,12 @@ public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Close
         db.execSQL("CREATE TRIGGER IF NOT EXISTS borrar_curso AFTER DELETE ON CURSO BEGIN DELETE FROM TAREA WHERE CURSO_ID=OLD._id; DELETE FROM UNIDAD WHERE CURSO_ID=OLD._id; DELETE FROM INSCRIPCION WHERE CURSO_ID=OLD._id; END");
     }
 
+    private void crearAvisos(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS AVISO (_id INTEGER PRIMARY KEY AUTOINCREMENT, DESTINATARIO TEXT NOT NULL, TAREA_ID INTEGER, TITULO TEXT NOT NULL, MENSAJE TEXT NOT NULL, DISPONIBLE_DESDE INTEGER NOT NULL, PUBLICADO INTEGER NOT NULL DEFAULT 0)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS avisos_destinatario ON AVISO(DESTINATARIO, PUBLICADO)");
+        db.execSQL("CREATE TRIGGER IF NOT EXISTS borrar_avisos_tarea AFTER DELETE ON TAREA BEGIN DELETE FROM AVISO WHERE TAREA_ID=OLD._id; END");
+    }
+
     private void crearLaboratorios(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS LABORATORIO (_id INTEGER PRIMARY KEY AUTOINCREMENT, CURSO_ID INTEGER NOT NULL, TITULO TEXT NOT NULL, OBJETIVO TEXT NOT NULL, GUIA TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS LAB_RECURSO (_id INTEGER PRIMARY KEY AUTOINCREMENT, LAB_ID INTEGER NOT NULL, NOMBRE TEXT NOT NULL, RUTA TEXT NOT NULL, MIME TEXT NOT NULL)");
@@ -185,5 +192,6 @@ public class AppDatabaseHelper extends SQLiteOpenHelper implements java.io.Close
         if (anterior < 4) crearEntregas(db);
         if (anterior < 5) crearPoliticaTardias(db);
         if (anterior < 6) crearLaboratorios(db);
+        if (anterior < 7) crearAvisos(db);
     }
 }

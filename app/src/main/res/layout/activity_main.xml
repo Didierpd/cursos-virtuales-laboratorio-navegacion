@@ -59,6 +59,10 @@
         android:layout_height="wrap_content"
         android:text="Servicios REST" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAvisos" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Avisos y servicios" />
+
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
         android:layout_marginTop="16dp" android:text="Talleres del curso" android:textStyle="bold" android:textSize="18sp" />
     <com.google.android.material.button.MaterialButton

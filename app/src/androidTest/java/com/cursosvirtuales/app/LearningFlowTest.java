@@ -58,6 +58,10 @@ public class LearningFlowTest extends AndroidTestCase {
         repo.submit(taskId,Arrays.asList(file("evidencia1.txt"),file("evidencia2.txt")));
         LearningRepository.Submission submission = repo.submissions(repo.task(taskId)).get(0);
         assertEquals(2,submission.getFiles().size());
+        com.cursosvirtuales.app.servicios.AvisosRepository avisos = new com.cursosvirtuales.app.servicios.AvisosRepository(isolated);
+        assertEquals(1, avisos.listar(teacher).size());
+        assertEquals(taskId, avisos.listar(teacher).get(0).getTareaId().longValue());
+        assertTrue(avisos.listar(student).isEmpty());
         assertTrue(submission.getDate() > 0);
         rejected(() -> repo.submit(taskId,Collections.singletonList(Uri.EMPTY)));
         rejected(() -> repo.grade(taskId,submission.getId(),80,"No autorizado"));
@@ -65,8 +69,12 @@ public class LearningFlowTest extends AndroidTestCase {
         rejected(() -> repo.grade(taskId,submission.getId(),101,"Fuera de rango"));
         rejected(() -> repo.grade(taskId,submission.getId(),Double.NaN,"Inválida"));
         rejected(() -> repo.grade(taskId,submission.getId(),90," "));
+        assertTrue(avisos.listar(student).isEmpty());
         repo.grade(taskId,submission.getId(),80,"Buen trabajo");
+        assertEquals(1, avisos.listar(student).size());
         repo.grade(taskId,submission.getId(),95,"Corrección revisada");
+        assertEquals(2, avisos.listar(student).size());
+        assertFalse(avisos.listar(student).get(0).getId() == avisos.listar(student).get(1).getId());
         login(student);
         LearningRepository.Submission saved = new LearningRepository(isolated).submissions(repo.task(taskId)).get(0);
         assertEquals(95.0,saved.getGrade(),0.001);
@@ -108,7 +116,7 @@ public class LearningFlowTest extends AndroidTestCase {
         db.execSQL("DROP TABLE ADJUNTO"); db.execSQL("DROP TABLE ENTREGA");
         db.setVersion(3); helper.close();
         helper = new AppDatabaseHelper(isolated);
-        assertEquals(6,helper.getReadableDatabase().getVersion());
+        assertEquals(7,helper.getReadableDatabase().getVersion());
         helper.close();
         assertNotNull(new CourseRepository(isolated).buscarPorId(courseId));
         assertNotNull(new LearningRepository(isolated).task(taskId));
@@ -224,4 +232,20 @@ public class LearningFlowTest extends AndroidTestCase {
         } finally { isolated.deleteDatabase("test_learning_"+name); }
     }
 
+    public void testVersion6MigrationPreservesTasksAndAllowsNotifications() {
+        try (AppDatabaseHelper helper = new AppDatabaseHelper(isolated)) {
+            SQLiteDatabase db = helper.getWritableDatabase();
+            db.execSQL("DROP TRIGGER borrar_avisos_tarea");
+            db.execSQL("DROP TABLE AVISO");
+            db.setVersion(6);
+        }
+        assertNotNull(new LearningRepository(isolated).task(taskId));
+        assertTrue(new com.cursosvirtuales.app.servicios.AvisosRepository(isolated).listar(teacher).isEmpty());
+        long id = new com.cursosvirtuales.app.servicios.AvisosRepository(isolated).demostracion(teacher, "Migración correcta");
+        assertTrue(id > 0);
+        // El recordatorio no pertenece a una tarea y se retira al terminar esta prueba.
+        try (AppDatabaseHelper helper = new AppDatabaseHelper(isolated)) {
+            helper.getWritableDatabase().delete("AVISO", "_id=?", new String[]{String.valueOf(id)});
+        }
+    }
 }

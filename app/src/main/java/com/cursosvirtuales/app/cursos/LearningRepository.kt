@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
 import com.cursosvirtuales.app.data.AppDatabaseHelper
+import com.cursosvirtuales.app.servicios.AvisosRepository
 import com.cursosvirtuales.app.model.Role
 import java.io.File
 import java.util.UUID
@@ -131,6 +132,12 @@ class LearningRepository(private val context: Context) {
                     attachments.forEach { a ->
                         db.insertOrThrow("ADJUNTO",null,ContentValues().apply { put("ENTREGA_ID",id); put("NOMBRE",a.name); put("RUTA",a.path); put("MIME",a.mime) })
                     }
+                    val docente = db.rawQuery("SELECT DOCENTE_ID FROM CURSO WHERE _id=?", arrayOf(task.cursoId.toString())).use { c ->
+                        check(c.moveToFirst()) { "El curso ya no existe." }
+                        c.getString(0)
+                    }
+                    AvisosRepository.guardar(db, docente, task.id, "Nueva entrega para calificar",
+                        "${user.fullName} entregó ${task.titulo}.")
                     db.setTransactionSuccessful()
                 } finally { db.endTransaction() }
             }
@@ -146,8 +153,23 @@ class LearningRepository(private val context: Context) {
         require(grade.isFinite() && grade >= 0 && grade <= task.puntaje) { "La nota debe estar entre 0 y ${task.puntaje}." }
         require(feedback.isNotBlank()) { "Escribe una retroalimentación." }
         AppDatabaseHelper(context).use { helper ->
-            val values = ContentValues().apply { put("NOTA",grade); put("COMENTARIO",feedback.trim()) }
-            check(helper.writableDatabase.update("ENTREGA",values,"_id=? AND TAREA_ID=?",arrayOf(submissionId.toString(), taskId.toString())) == 1) { "No se encontró la entrega." }
+            val db = helper.writableDatabase
+            db.beginTransaction()
+            try {
+                val destinatario = db.rawQuery("SELECT ESTUDIANTE_ID FROM ENTREGA WHERE _id=? AND TAREA_ID=?",
+                    arrayOf(submissionId.toString(), taskId.toString())).use { c ->
+                    check(c.moveToFirst()) { "No se encontró la entrega." }
+                    c.getString(0)
+                }
+                val values = ContentValues().apply { put("NOTA", grade); put("COMENTARIO", feedback.trim()) }
+                check(db.update("ENTREGA", values, "_id=? AND TAREA_ID=?",
+                    arrayOf(submissionId.toString(), taskId.toString())) == 1)
+                AvisosRepository.guardar(db, destinatario, task.id, "Calificación disponible",
+                    "${task.titulo}: $grade / ${task.puntaje}. Consulta la retroalimentación en la tarea.")
+                db.setTransactionSuccessful()
+            } finally {
+                db.endTransaction()
+            }
         }
     }
 

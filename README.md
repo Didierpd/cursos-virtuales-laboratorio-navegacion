@@ -26,6 +26,10 @@ creación/edición de cursos e inscripciones del ZIP original.
 Incluye la respuesta al ejercicio de la diapositiva 8, clasificación de pantallas,
 mapa de navegación por rol y uso de listas, adaptadores e intents.
 
+## Laboratorio de started services
+
+**Avisos y servicios** permite iniciar un recordatorio con espera de 10 segundos mediante `IntentService`. Las entregas generan avisos para el docente y las calificaciones para el estudiante de la cuenta local. Ver [recorrido y funcionamiento de las notificaciones](docs/laboratorio-started-services.md).
+
 ## Laboratorio GPS y Google Maps
 
 Planear recorridos diarios por recolector y fecha en **Encomiendas · SQLite** o comparar ubicaciones de docentes en **Rutas de tutoría**. Ver [recorrido de demostración y guía de Maps](docs/laboratorio-maps-intent.md).

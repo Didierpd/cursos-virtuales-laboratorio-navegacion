@@ -101,7 +101,7 @@ class TaskDetailActivity : AppCompatActivity() {
                 busy = false
                 requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 if (!isDestroyed && !isFinishing) {
-                    if(result.isSuccess) { selected.clear(); message("Entrega registrada correctamente con fecha y hora.") }
+                    if(result.isSuccess) { com.cursosvirtuales.app.servicios.AvisosAndroid.procesar(this); selected.clear(); message("Entrega registrada correctamente con fecha y hora.") }
                     else message(result.exceptionOrNull()?.message ?: "No se pudo guardar la entrega.")
                     render()
                 }
@@ -119,6 +119,7 @@ class TaskDetailActivity : AppCompatActivity() {
             try {
                 val value = score.text.toString().replace(',','.').toDoubleOrNull() ?: error("Escribe una nota válida.")
                 repo.grade(task.id,submission.id,value,feedback.text.toString())
+                com.cursosvirtuales.app.servicios.AvisosAndroid.procesar(this)
                 dialog.dismiss(); message("Calificación guardada."); render()
             } catch(e: Exception) { message(e.message ?: "No se pudo calificar.") }
         } }
