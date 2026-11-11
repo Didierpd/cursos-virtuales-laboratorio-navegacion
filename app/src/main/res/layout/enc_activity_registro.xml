@@ -202,6 +202,12 @@
             android:text="Registrar encomienda" />
 
         <Button
+            android:id="@+id/enc_btn_rutas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ruta diaria de recolección" />
+
+        <Button
             android:id="@+id/enc_btn_consultar"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"

@@ -21,7 +21,7 @@ import java.util.List;
 public class EncomiendasDbHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "encomiendas.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // ---------- Tablas ----------
     public static final String TABLA_REMITENTE = "REMITENTE";
@@ -99,15 +99,42 @@ public class EncomiendasDbHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCrearPersona(TABLA_REMITENTE));
         db.execSQL(sqlCrearPersona(TABLA_DESTINATARIO));
         db.execSQL(SQL_CREAR_ENCOMIENDA);
+        crearRecolecciones(db);
+    }
+
+    private static void crearRecolecciones(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE RECOLECCION (ENCOMIENDA_ID INTEGER NOT NULL REFERENCES ENCOMIENDA(_id) ON DELETE CASCADE, "
+                + "FECHA TEXT NOT NULL, RECOLECTOR TEXT NOT NULL, LATITUD REAL NOT NULL, LONGITUD REAL NOT NULL, "
+                + "PRIMARY KEY (ENCOMIENDA_ID, FECHA))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Primero la tabla hija (tiene las llaves foráneas), luego las padres
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_ENCOMIENDA);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_REMITENTE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLA_DESTINATARIO);
-        onCreate(db);
+        if (oldVersion < 2) crearRecolecciones(db);
+    }
+
+    public void asignarRecoleccion(long id, String fecha, String recolector, double latitud, double longitud) {
+        ContentValues values = new ContentValues();
+        values.put("ENCOMIENDA_ID", id);
+        values.put("FECHA", fecha);
+        values.put("RECOLECTOR", recolector);
+        values.put("LATITUD", latitud);
+        values.put("LONGITUD", longitud);
+        getWritableDatabase().insertWithOnConflict("RECOLECCION", null, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    public void quitarRecoleccion(long id, String fecha) {
+        getWritableDatabase().delete("RECOLECCION", "ENCOMIENDA_ID = ? AND FECHA = ?",
+                new String[]{String.valueOf(id), fecha});
+    }
+
+    public Cursor paradasDelDia(String fecha, String recolector) {
+        return getReadableDatabase().rawQuery(
+                "SELECT e.GUIA, r.LATITUD, r.LONGITUD, p.DIRECCION, p.CIUDAD FROM RECOLECCION r "
+                + "JOIN ENCOMIENDA e ON r.ENCOMIENDA_ID = e._id "
+                + "JOIN REMITENTE p ON p._id = e.REMITENTE_ID "
+                + "WHERE r.FECHA = ? AND r.RECOLECTOR = ? ORDER BY e._id",
+                new String[]{fecha, recolector});
     }
 
     // =====================================================================

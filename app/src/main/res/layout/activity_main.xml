@@ -65,6 +65,9 @@
         android:id="@+id/btnEncomiendas" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:text="Encomiendas · SQLite" />
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTutorias" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Rutas de tutoría" />
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLayouts" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:text="Interfaces y formularios" />
 

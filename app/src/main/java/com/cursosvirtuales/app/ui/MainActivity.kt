@@ -87,6 +87,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnEncomiendas.setOnClickListener {
             startActivity(Intent(this, com.cursosvirtuales.app.talleres.encomiendas.RegistroActivity::class.java))
         }
+        binding.btnTutorias.setOnClickListener {
+            startActivity(Intent(this, com.cursosvirtuales.app.talleres.mapas.RutasActivity::class.java)
+                .putExtra("tutoria", true))
+        }
         binding.btnLayouts.setOnClickListener {
             startActivity(Intent(this, com.cursosvirtuales.app.talleres.layouts.LayoutLabActivity::class.java))
         }

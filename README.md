@@ -26,6 +26,10 @@ creación/edición de cursos e inscripciones del ZIP original.
 Incluye la respuesta al ejercicio de la diapositiva 8, clasificación de pantallas,
 mapa de navegación por rol y uso de listas, adaptadores e intents.
 
+## Laboratorio GPS y Google Maps
+
+Planear recorridos diarios por recolector y fecha en **Encomiendas · SQLite** o comparar ubicaciones de docentes en **Rutas de tutoría**. Ver [recorrido de demostración y guía de Maps](docs/laboratorio-maps-intent.md).
+
 ## Ejecutar
 
 1. Abrir esta carpeta en Android Studio.

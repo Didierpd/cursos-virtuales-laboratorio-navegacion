@@ -52,4 +52,35 @@ public class EncomiendasIntegrationTest extends AndroidTestCase {
         assertEquals("Ana", helper.consultarEncomiendas().get(0).getRemitente().getNombre());
         helper.close();
     }
+    public void testRouteAssignmentAfterVersionOneMigration() {
+        EncomiendasDbHelper helper = new EncomiendasDbHelper(isolated);
+        long id = helper.insertarEncomienda(sender("Ana"), recipient(), parcel(sender("Ana")));
+        assertTrue(id > 0);
+        SQLiteDatabase v1 = helper.getWritableDatabase();
+        v1.execSQL("DROP TABLE RECOLECCION");
+        v1.setVersion(1);
+        helper.close();
+
+        helper = new EncomiendasDbHelper(isolated);
+        assertEquals(1, helper.consultarEncomiendas().size());
+        helper.asignarRecoleccion(id, "2026-11-10", "R1", 4.63, -74.06);
+        helper.asignarRecoleccion(id, "2026-11-11", "R1", 4.64, -74.07);
+        helper.asignarRecoleccion(id, "2026-11-10", "R2", 4.65, -74.08);
+        helper.close();
+
+        helper = new EncomiendasDbHelper(isolated);
+        try (android.database.Cursor cursor = helper.paradasDelDia("2026-11-10", "R2")) {
+            assertTrue(cursor.moveToFirst());
+            assertEquals("TEST-001", cursor.getString(0));
+            assertEquals(4.65, cursor.getDouble(1), 0.00001);
+            assertFalse(cursor.moveToNext());
+        }
+        try (android.database.Cursor cursor = helper.paradasDelDia("2026-11-10", "R1")) {
+            assertEquals(0, cursor.getCount());
+        }
+        try (android.database.Cursor cursor = helper.paradasDelDia("2026-11-11", "R1")) {
+            assertEquals(1, cursor.getCount());
+        }
+        helper.close();
+    }
 }

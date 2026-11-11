@@ -63,6 +63,9 @@ public class RegistroActivity extends TallerActivity {
         Button btnRegistrar = findViewById(R.id.enc_btn_registrar);
         Button btnConsultar = findViewById(R.id.enc_btn_consultar);
 
+        findViewById(R.id.enc_btn_rutas).setOnClickListener(v ->
+                startActivity(new Intent(this, com.cursosvirtuales.app.talleres.mapas.RutasActivity.class)));
+
         // Botón 1: adición de datos en SQLite
         btnRegistrar.setOnClickListener(v -> registrarEncomienda());
 
